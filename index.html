@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kozmosweb3 | Web3 Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Cosmic Animated Background */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e, #0d1117);
+            background-size: 400% 400%;
+            animation: cosmicBackground 15s ease infinite;
+            color: #e6edf3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        @keyframes cosmicBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            width: 90%;
+            margin: 2rem auto;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(22, 27, 34, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: transform 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Typography */
+        h1 {
+            color: #58a6ff;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
+        }
+
+        .subtitle {
+            color: #8b949e;
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            color: #7ee787;
+            border-bottom: 1px solid rgba(126, 231, 135, 0.3);
+            padding-bottom: 10px;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        p {
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .highlight {
+            color: #ff7b72;
+            font-weight: bold;
+        }
+
+        /* Tags for Interests */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: rgba(88, 166, 255, 0.1);
+            color: #58a6ff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(88, 166, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: rgba(88, 166, 255, 0.2);
+            box-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
+        }
+
+        /* Social Media Buttons */
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #e6edf3;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn i {
+            font-size: 1.4rem;
+        }
+
+        /* Specific Brand Colors on Hover */
+        .social-btn.twitter:hover { background: #1DA1F2; border-color: #1DA1F2; }
+        .social-btn.telegram:hover { background: #0088cc; border-color: #0088cc; }
+        .social-btn.github:hover { background: #333; border-color: #333; }
+        
+        /* CoinMarketCap Container adjustments */
+        .cmc-container {
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* CMC widget custom background fix for transparent look */
+        .cmc-container > div {
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 12px !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <h1>Kozmosweb3 🌌</h1>
+            <p class="subtitle">Web3 Ambassador & Tech Researcher</p>
+        </header>
+
+        <div class="glass-card">
+            <h2><i class="fa-solid fa-user-astronaut"></i> About Me</h2>
+            <p>I have been actively involved in the crypto ecosystem for <span class="highlight">[Enter Year]</span> years. Approaching complex market dynamics and projects with clinical meticulousness, I contribute to building the decentralized world. My main objective is to transparently share technical developments within the Web3 space with the community.</p>
+        </div>
+
+        <div class="glass-card">
+            <h2><i class="fa-solid fa-crosshairs"></i> Focus Areas & Interests</h2>
+            <div class="tags-container">
+                <span class="tag"><i class="fa-solid fa-handshake"></i> Ambassador (VOOI, GRVT, Prividium)</span>
+                <span class="tag"><i class="fa-solid fa-shield-halved"></i> Decentralized Privacy & OWS</span>
+                <span class="tag"><i class="fa-solid fa-terminal"></i> Mining & Terminal Automation</span>
+                <span class="tag"><i class="fa-solid fa-gamepad"></i> GameFi & Virtual Point Simulations</span>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <h2><i class="fa-solid fa-chart-line"></i> Market Overview</h2>
+            <div class="cmc-container">
+                <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
+                <div class="coinmarketcap-currency-widget" data-currencyid="1" data-base="USD" data-secondary="" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-statsticker="true" data-stats="USD" data-theme="dark"></div>
+                </div>
+        </div>
+
+        <div class="glass-card">
+            <h2><i class="fa-solid fa-link"></i> Connect With Me</h2>
+            <div class="social-links">
+                <a href="https://twitter.com/kozmosweb3" target="_blank" class="social-btn twitter">
+                    <i class="fa-brands fa-x-twitter"></i> Twitter
+                </a>
+                <a href="https://t.me/elfjokas" target="_blank" class="social-btn telegram">
+                    <i class="fa-brands fa-telegram"></i> Telegram
+                </a>
+                <a href="https://github.com/kozmosweb3" target="_blank" class="social-btn github">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
