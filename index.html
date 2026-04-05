@@ -5,256 +5,293 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kozmosweb3 | Web3 Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* Cosmic Animated Background */
+        /* === BASE & TYPOGRAPHY === */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e, #0d1117);
-            background-size: 400% 400%;
-            animation: cosmicBackground 15s ease infinite;
+            font-family: 'Rajdhani', sans-serif;
+            background-color: #050510;
             color: #e6edf3;
+            overflow-x: hidden;
             display: flex;
             justify-content: center;
-            align-items: center;
             min-height: 100vh;
+            position: relative;
         }
 
-        @keyframes cosmicBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* === ANIMATED STARFIELD BACKGROUND === */
+        #stars-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at bottom center, #1b0033 0%, #050510 100%);
+            overflow: hidden;
         }
 
-        /* Main Container */
+        .stars, .stars2, .stars3 {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100%; height: 100%;
+            display: block;
+            background: transparent;
+        }
+
+        /* Using pure CSS shadows for stars */
+        .stars { animation: animStar 50s linear infinite; }
+        .stars2 { animation: animStar 100s linear infinite; opacity: 0.7;}
+        .stars3 { animation: animStar 150s linear infinite; opacity: 0.5;}
+
+        .stars::after, .stars2::after, .stars3::after {
+            content: " ";
+            position: absolute;
+            top: 2000px;
+            width: 100%; height: 100%;
+            background: transparent;
+        }
+
+        /* Basic random dots generated via radial gradient for stars */
+        .stars { background-image: radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)), radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)), radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)), radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)), radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)), radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0)); background-repeat: repeat; background-size: 200px 200px; }
+        .stars2 { background-image: radial-gradient(3px 3px at 50px 100px, #fff, rgba(0,0,0,0)), radial-gradient(3px 3px at 150px 200px, #00f3ff, rgba(0,0,0,0)), radial-gradient(3px 3px at 250px 300px, #fff, rgba(0,0,0,0)); background-repeat: repeat; background-size: 300px 300px; }
+        .stars3 { background-image: radial-gradient(4px 4px at 100px 150px, #b026ff, rgba(0,0,0,0)), radial-gradient(4px 4px at 300px 50px, #fff, rgba(0,0,0,0)); background-repeat: repeat; background-size: 400px 400px; }
+
+        @keyframes animStar {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-2000px); }
+        }
+
+        /* === CONTAINER & ENTRANCE ANIMATION === */
         .container {
             max-width: 800px;
             width: 90%;
-            margin: 2rem auto;
+            margin: 3rem auto;
+            position: relative;
+            z-index: 10;
+            animation: fadeInTop 1.5s ease-out forwards;
         }
 
-        /* Glassmorphism Card Style */
-        .glass-card {
-            background: rgba(22, 27, 34, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            transition: transform 0.3s ease;
+        @keyframes fadeInTop {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        .glass-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Typography */
+        /* === HEADER === */
+        header { text-align: center; margin-bottom: 2rem; }
         h1 {
-            color: #58a6ff;
-            text-align: center;
-            font-size: 2.5rem;
+            font-family: 'Orbitron', sans-serif;
+            color: #00f3ff;
+            font-size: 3rem;
             margin-bottom: 5px;
-            text-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.6), 0 0 30px rgba(0, 243, 255, 0.4);
+            animation: pulseGlow 3s infinite alternate;
+        }
+        
+        @keyframes pulseGlow {
+            0% { text-shadow: 0 0 15px rgba(0, 243, 255, 0.6); }
+            100% { text-shadow: 0 0 25px rgba(0, 243, 255, 0.9), 0 0 40px rgba(176, 38, 255, 0.5); }
         }
 
         .subtitle {
-            color: #8b949e;
-            text-align: center;
-            font-size: 1.2rem;
+            color: #b026ff;
+            font-size: 1.4rem;
+            font-weight: 600;
             margin-top: 0;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* === GLASSMORPHISM CARDS WITH ZERO GRAVITY FLOAT === */
+        .glass-card {
+            background: rgba(15, 15, 30, 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
             margin-bottom: 30px;
-            letter-spacing: 1px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 243, 255, 0.05);
+            transform-style: preserve-3d; /* For 3D JS Effect */
+            transition: border 0.3s, box-shadow 0.3s;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .glass-card:nth-child(even) { animation-delay: -3s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .glass-card:hover {
+            border: 1px solid rgba(0, 243, 255, 0.6);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 243, 255, 0.3);
+            /* float animation is paused by JS during hover to allow 3D tilt */
         }
 
         h2 {
-            color: #7ee787;
-            border-bottom: 1px solid rgba(126, 231, 135, 0.3);
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            border-bottom: 1px solid rgba(176, 38, 255, 0.4);
             padding-bottom: 10px;
             margin-top: 0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
         }
 
-        p {
-            line-height: 1.7;
-            font-size: 1.05rem;
-        }
+        h2 i { color: #00f3ff; }
 
-        .highlight {
-            color: #ff7b72;
-            font-weight: bold;
-        }
+        p { font-size: 1.15rem; line-height: 1.7; font-weight: 500; }
+        .highlight { color: #00f3ff; font-weight: 700; text-shadow: 0 0 8px rgba(0,243,255,0.4); }
 
-        /* Tags for Interests */
-        .tags-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
+        /* === TAGS (FOCUS AREAS) === */
+        .tags-container { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
         .tag {
-            background: rgba(88, 166, 255, 0.1);
-            color: #58a6ff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.95rem;
-            border: 1px solid rgba(88, 166, 255, 0.3);
+            background: linear-gradient(90deg, rgba(0, 243, 255, 0.1), rgba(176, 38, 255, 0.1));
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 243, 255, 0.3);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-
         .tag:hover {
-            background: rgba(88, 166, 255, 0.2);
-            box-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
+            background: linear-gradient(90deg, rgba(0, 243, 255, 0.3), rgba(176, 38, 255, 0.3));
+            border-color: #00f3ff;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+            transform: scale(1.05);
         }
 
-        /* Stats Grid */
+        /* === STATS GRID === */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
         }
-
         .stat-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(176, 38, 255, 0.3);
+            border-radius: 15px;
+            padding: 25px 10px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .stat-box::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 15px; z-index: -1;
+            background: radial-gradient(circle, rgba(176,38,255,0.2) 0%, transparent 70%);
+            opacity: 0; transition: opacity 0.4s;
+        }
+        .stat-box:hover::before { opacity: 1; }
+        .stat-box:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: #b026ff;
+            box-shadow: 0 0 20px rgba(176, 38, 255, 0.4);
+        }
+        .stat-box i { font-size: 2rem; color: #00f3ff; margin-bottom: 15px; filter: drop-shadow(0 0 5px #00f3ff); }
+        .stat-number { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: #fff; margin-bottom: 5px; }
+        .stat-label { font-size: 0.9rem; color: #a3aed0; font-weight: 700; letter-spacing: 2px; }
+
+        /* === SOCIAL MEDIA BUTTONS === */
+        .social-links { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 25px; }
+        .social-btn {
+            display: flex; align-items: center; gap: 12px;
+            color: #fff; text-decoration: none;
+            padding: 14px 28px; border-radius: 40px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 20px 10px;
-            text-align: center;
-            transition: all 0.3s ease;
+            font-weight: 700; font-size: 1.1rem; letter-spacing: 1px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; overflow: hidden;
         }
+        .social-btn::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.5s;
+        }
+        .social-btn:hover::before { left: 100%; }
+        .social-btn:hover { transform: translateY(-5px); }
+        .social-btn i { font-size: 1.5rem; }
+        .social-btn.twitter:hover { background: rgba(29, 161, 242, 0.2); border-color: #1DA1F2; box-shadow: 0 0 20px rgba(29, 161, 242, 0.5); color: #1DA1F2; }
+        .social-btn.telegram:hover { background: rgba(0, 136, 204, 0.2); border-color: #0088cc; box-shadow: 0 0 20px rgba(0, 136, 204, 0.5); color: #0088cc; }
+        .social-btn.github:hover { background: rgba(255, 255, 255, 0.1); border-color: #fff; box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
 
-        .stat-box:hover {
-            background: rgba(88, 166, 255, 0.08);
-            border-color: rgba(88, 166, 255, 0.3);
-            transform: translateY(-3px);
-        }
+        /* === CMC CONTAINER === */
+        .cmc-container { margin-top: 25px; border-radius: 15px; overflow: hidden; display: flex; justify-content: center; }
+        .cmc-container > div { border: 1px solid rgba(0, 243, 255, 0.2) !important; border-radius: 15px !important; box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important; }
 
-        .stat-box i {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: #7ee787;
-        }
-
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #e6edf3;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #8b949e;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Social Media Buttons */
-        .social-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .social-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #e6edf3;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-btn i {
-            font-size: 1.4rem;
-        }
-
-        .social-btn.twitter:hover { background: #1DA1F2; border-color: #1DA1F2; }
-        .social-btn.telegram:hover { background: #0088cc; border-color: #0088cc; }
-        .social-btn.github:hover { background: #333; border-color: #333; }
-        
-        /* Containers */
-        .cmc-container {
-            margin-top: 20px;
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .cmc-container > div {
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            border-radius: 12px !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-        }
     </style>
 </head>
 <body>
 
+    <div id="stars-container">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+    </div>
+
     <div class="container">
         
         <header>
-            <h1>Kozmosweb3 🌌</h1>
+            <h1>Kozmosweb3</h1>
             <p class="subtitle">Web3 Ambassador & Tech Researcher</p>
         </header>
 
-        <div class="glass-card">
+        <div class="glass-card tilt-card">
             <h2><i class="fa-solid fa-user-astronaut"></i> About Me</h2>
             <p>I have been actively involved in the crypto ecosystem for <span class="highlight">[Enter Year]</span> years. Approaching complex market dynamics and projects with clinical meticulousness, I contribute to building the decentralized world. My main objective is to transparently share technical developments within the Web3 space with the community.</p>
         </div>
 
-        <div class="glass-card">
+        <div class="glass-card tilt-card">
             <h2><i class="fa-solid fa-chart-pie"></i> Community Impact</h2>
-            <p style="text-align: center; color: #8b949e; margin-top: -5px; font-size: 0.95rem;">Metrics generated for supported Web3 projects</p>
+            <p style="text-align: center; color: #a3aed0; margin-top: -5px; font-size: 1rem; font-weight: 600;">Metrics generated for supported Web3 projects</p>
             <div class="stats-grid">
                 <div class="stat-box">
                     <i class="fa-solid fa-eye"></i>
                     <div class="stat-number">1M+</div>
-                    <div class="stat-label">Views</div>
+                    <div class="stat-label">VIEWS</div>
                 </div>
                 <div class="stat-box">
                     <i class="fa-solid fa-heart"></i>
                     <div class="stat-number">100K+</div>
-                    <div class="stat-label">Likes</div>
+                    <div class="stat-label">LIKES</div>
                 </div>
                 <div class="stat-box">
                     <i class="fa-solid fa-comment-dots"></i>
                     <div class="stat-number">10K+</div>
-                    <div class="stat-label">Comments</div>
+                    <div class="stat-label">COMMENTS</div>
                 </div>
                 <div class="stat-box">
                     <i class="fa-solid fa-retweet"></i>
                     <div class="stat-number">5K+</div>
-                    <div class="stat-label">Retweets</div>
+                    <div class="stat-label">RETWEETS</div>
                 </div>
             </div>
         </div>
 
-        <div class="glass-card">
+        <div class="glass-card tilt-card">
             <h2><i class="fa-solid fa-crosshairs"></i> Focus Areas & Interests</h2>
             <div class="tags-container">
-                <span class="tag"><i class="fa-solid fa-handshake"></i> Ambassador (VOOI, GRVT, Prividium)</span>
-                <span class="tag"><i class="fa-solid fa-shield-halved"></i> Decentralized Privacy & OWS</span>
-                <span class="tag"><i class="fa-solid fa-terminal"></i> Mining & Terminal Automation</span>
-                <span class="tag"><i class="fa-solid fa-gamepad"></i> GameFi & Virtual Point Simulations</span>
+                <span class="tag"><i class="fa-solid fa-handshake"></i> Ambassador (VOOI, GRVT)</span>
+                <span class="tag"><i class="fa-solid fa-shield-halved"></i> Privacy & OWS Sentinel</span>
+                <span class="tag"><i class="fa-solid fa-terminal"></i> Mining Automation</span>
+                <span class="tag"><i class="fa-solid fa-gamepad"></i> GameFi Economics</span>
             </div>
         </div>
 
-        <div class="glass-card">
+        <div class="glass-card tilt-card">
             <h2><i class="fa-solid fa-chart-line"></i> Market Overview</h2>
             <div class="cmc-container">
                 <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
@@ -262,7 +299,7 @@
             </div>
         </div>
 
-        <div class="glass-card">
+        <div class="glass-card tilt-card">
             <h2><i class="fa-solid fa-link"></i> Connect With Me</h2>
             <div class="social-links">
                 <a href="https://twitter.com/kozmosweb3" target="_blank" class="social-btn twitter">
@@ -279,7 +316,44 @@
 
     </div>
 
-</body>
-</html>
+    <script>
+        const cards = document.querySelectorAll('.tilt-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                // Pause floating animation during interaction
+                card.style.animation = 'none';
+                
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                // Calculate rotation (max 10 degrees)
+                const rotateX = ((y - centerY) / centerY) * -10;
+                const rotateY = ((x - centerX) / centerX) * 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                // Reset transform smoothly
+                card.style.transition = 'transform 0.5s ease, box-shadow 0.5s ease, border 0.5s ease';
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                
+                // Restart float animation after short delay
+                setTimeout(() => {
+                    card.style.transition = 'border 0.3s, box-shadow 0.3s';
+                    card.style.animation = 'float 6s ease-in-out infinite';
+                }, 500);
+            });
+            
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'none'; // Remove transition for immediate tilt follow
+            });
+        });
+    </script>
 </body>
 </html>
