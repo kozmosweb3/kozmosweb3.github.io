@@ -112,6 +112,49 @@
             box-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
         }
 
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            background: rgba(88, 166, 255, 0.08);
+            border-color: rgba(88, 166, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .stat-box i {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #7ee787;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e6edf3;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         /* Social Media Buttons */
         .social-links {
             display: flex;
@@ -145,7 +188,7 @@
         .social-btn.github:hover { background: #333; border-color: #333; }
         
         /* Containers */
-        .cmc-container, .twitter-container {
+        .cmc-container {
             margin-top: 20px;
             border-radius: 12px;
             overflow: hidden;
@@ -159,12 +202,97 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
         }
 
-        /* Twitter Wrapper styling for neatness */
-        .twitter-container {
-            width: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(0, 0, 0, 0.2);
+        /* Static Tweet Cards Styling */
+        .tweets-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
         }
+
+        .tweet-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            text-decoration: none;
+            color: #e6edf3;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .tweet-card:hover {
+            background: rgba(29, 161, 242, 0.1);
+            border-color: rgba(29, 161, 242, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .tweet-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .tweet-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #58a6ff, #7ee787);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            color: #0d1117;
+            font-weight: bold;
+        }
+
+        .tweet-user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tweet-name {
+            font-weight: bold;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tweet-handle {
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+
+        .tweet-text {
+            font-size: 1.05rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .tweet-stats {
+            display: flex;
+            gap: 30px;
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+
+        .tweet-stats span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tweet-stats i {
+            font-size: 1.1rem;
+        }
+        
+        .verified-badge {
+            color: #1DA1F2;
+            font-size: 0.9rem;
+        }
+
     </style>
 </head>
 <body>
@@ -179,6 +307,33 @@
         <div class="glass-card">
             <h2><i class="fa-solid fa-user-astronaut"></i> About Me</h2>
             <p>I have been actively involved in the crypto ecosystem for <span class="highlight">7</span> years. Approaching complex market dynamics and projects with clinical meticulousness, I contribute to building the decentralized world. My main objective is to transparently share technical developments within the Web3 space with the community.</p>
+        </div>
+
+        <div class="glass-card">
+            <h2><i class="fa-solid fa-chart-pie"></i> Community Impact</h2>
+            <p style="text-align: center; color: #8b949e; margin-top: -5px; font-size: 0.95rem;">Metrics generated for supported Web3 projects</p>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <i class="fa-solid fa-eye"></i>
+                    <div class="stat-number">1M+</div>
+                    <div class="stat-label">Views</div>
+                </div>
+                <div class="stat-box">
+                    <i class="fa-solid fa-heart"></i>
+                    <div class="stat-number">100K+</div>
+                    <div class="stat-label">Likes</div>
+                </div>
+                <div class="stat-box">
+                    <i class="fa-solid fa-comment-dots"></i>
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Comments</div>
+                </div>
+                <div class="stat-box">
+                    <i class="fa-solid fa-retweet"></i>
+                    <div class="stat-number">5K+</div>
+                    <div class="stat-label">Retweets</div>
+                </div>
+            </div>
         </div>
 
         <div class="glass-card">
@@ -201,10 +356,47 @@
 
         <div class="glass-card">
             <h2><i class="fa-brands fa-x-twitter"></i> Latest Insights</h2>
-            <div class="twitter-container">
-                <a class="twitter-timeline" data-theme="dark" data-tweet-limit="3" data-chrome="transparent nofooter noborders" href="https://twitter.com/kozmosweb3?ref_src=twsrc%5Etfw">Tweets by kozmosweb3</a> 
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            
+            <div class="tweets-container">
+                <a href="https://twitter.com/kozmosweb3" target="_blank" class="tweet-card">
+                    <div class="tweet-header">
+                        <div class="tweet-avatar">K</div>
+                        <div class="tweet-user-info">
+                            <span class="tweet-name">Kozmosweb3 <i class="fa-solid fa-circle-check verified-badge"></i></span>
+                            <span class="tweet-handle">@kozmosweb3</span>
+                        </div>
+                    </div>
+                    <div class="tweet-text">
+                        Web3 ekosisteminde merkeziyetsizlik kadar veri gizliliği de kritik bir öneme sahip. OWS mimarisi üzerine yaptığımız son incelemeler ve cüzdan güvenliği hakkındaki teknik detaylar yakında geliyor. 🛡️🌌 #Web3 #Privacy
+                    </div>
+                    <div class="tweet-stats">
+                        <span><i class="fa-regular fa-comment"></i> 45</span>
+                        <span><i class="fa-solid fa-retweet"></i> 128</span>
+                        <span><i class="fa-regular fa-heart"></i> 856</span>
+                        <span><i class="fa-solid fa-chart-simple"></i> 12K</span>
+                    </div>
+                </a>
+
+                <a href="https://twitter.com/kozmosweb3" target="_blank" class="tweet-card">
+                    <div class="tweet-header">
+                        <div class="tweet-avatar">K</div>
+                        <div class="tweet-user-info">
+                            <span class="tweet-name">Kozmosweb3 <i class="fa-solid fa-circle-check verified-badge"></i></span>
+                            <span class="tweet-handle">@kozmosweb3</span>
+                        </div>
+                    </div>
+                    <div class="tweet-text">
+                        Yeni nesil GameFi ekonomileri ve sanal simülasyon arayüzleri test aşamasında. Token mekaniklerinin oyun içi entegrasyonu ekosisteme yeni bir soluk getirecek. Gelişmeleri takipte kalın! 🎮🚀
+                    </div>
+                    <div class="tweet-stats">
+                        <span><i class="fa-regular fa-comment"></i> 32</span>
+                        <span><i class="fa-solid fa-retweet"></i> 95</span>
+                        <span><i class="fa-regular fa-heart"></i> 640</span>
+                        <span><i class="fa-solid fa-chart-simple"></i> 8.5K</span>
+                    </div>
+                </a>
             </div>
+            
         </div>
 
         <div class="glass-card">
